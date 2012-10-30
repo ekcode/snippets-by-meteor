@@ -19,8 +19,7 @@ if (Meteor.isClient) {
 
 	Template.inputarea.events({
 		'click .btnRemove': function () { 
-            console.debug(this._id);
-			Snippets.remove({_id:this._id});
+			Snippets.remove(this._id);
 		}
     });
 
