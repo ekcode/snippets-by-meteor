@@ -1,0 +1,28 @@
+<head>
+<title>My snippets</title>
+
+</head>
+
+<body>
+	{{> header}}
+	{{> inputarea}}
+	{{> admin}}
+</body>
+
+<template name="header">
+	<h1>{{title}}</h1>
+</template>
+
+<template name="inputarea">
+	<textarea id="txtContent" />
+	<input type="button" id="btnInsert" value="Write" />
+	{{#each snippets}}
+		<pre>{{content}}</pre>
+        <span>{{regdate}}</span>
+        <input type="button" class="btnRemove" value="Remove" />
+	{{/each}}
+</template>
+
+<template name="admin">
+	<input type="button" id="btnRemoveAll" value="Remove All" />
+</template>
