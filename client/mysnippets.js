@@ -6,12 +6,17 @@ Template.header.title = function () {
 };
 
 Template.inputarea.snippets = function () {
-    return Snippets.find({},{sort:{regdate:-1}});
+    var snippets = Snippets.find({},{sort:{regdate:-1}});
+    snippets.forEach(function (snippet) {
+        var date = new Date(snippet.regdate);
+        snippet.regdate2 = $.format.date(date.toString(), "yyyy년 MM월 dd일 HH:mm:ss");
+    });
+
+    return snippets;
 };
 
 Template.inputarea.events({
     'click #btnInsert': function () {
-        console.log("^^");
         var content = $('#txtContent').val();
         Snippets.insert({content:content, regdate:new Date().getTime()});
     }
