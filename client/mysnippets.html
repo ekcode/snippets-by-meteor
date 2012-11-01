@@ -1,28 +1,54 @@
 <head>
-<title>My snippets</title>
+<title>My Snippets</title>
 
 </head>
 
 <body>
-	{{> header}}
-	{{> inputarea}}
-	{{> admin}}
+  {{> header}}
+  {{> inputarea}}
+  {{> admin}}
 </body>
 
 <template name="header">
-	<h1>{{title}}</h1>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">{{title}}</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">My Snippets</a></li>
+            <li><a href="#">Tags</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="inputarea">
-	<textarea id="txtContent" />
-	<input type="button" id="btnInsert" value="Write" />
-	{{#each snippets}}
-		<pre>{{content}}</pre>
-        <span>{{regdate2}}</span>
-        <input type="button" class="btnRemove" value="Remove" />
-	{{/each}}
+  <div class="container">
+  <textarea rows="10"/>
+    <div style="text-align:right">
+      <input type="button" class="btn btn-primary" id="btnInsert" value="Write" />
+    </div>
+    {{#each snippets}}
+    <div>
+      <pre>{{content}}</pre>
+      <span>{{regdate}}</span>
+      <input type="button" class="btnRemove btn btn-warning" value="Remove" />
+    </div>
+    {{/each}}
+  </div>
 </template>
 
 <template name="admin">
-	<input type="button" id="btnRemoveAll" value="Remove All" />
+  <div class="container">
+    <input type="button" class="btn btn-danger" id="btnRemoveAll" value="Remove All" />
+  </div>
 </template>
