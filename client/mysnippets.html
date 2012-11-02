@@ -34,13 +34,14 @@
 <template name="inputarea">
   <div class="container">
   <textarea rows="10"/>
-    <div style="text-align:right">
+    <div style="text-align:center">
+      <input type="button" class="btn" id="btnReset" value="Reset" />
       <input type="button" class="btn btn-primary" id="btnInsert" value="Write" />
     </div>
     {{#each snippets}}
     <div>
       <pre>{{content}}</pre>
-      <span>{{regdate}}</span>
+      <span class="regdate">{{regdate}}</span>
       <input type="button" class="btnRemove btn btn-warning" value="Remove" />
     </div>
     {{/each}}

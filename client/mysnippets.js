@@ -6,19 +6,17 @@ Template.header.title = function () {
 };
 
 Template.inputarea.snippets = function () {
-    var snippets = Snippets.find({},{sort:{regdate:-1}});
-    snippets.forEach(function (snippet) {
-        var date = new Date(snippet.regdate);
-        snippet.regdate2 = $.format.date(date.toString(), "yyyy년 MM월 dd일 HH:mm:ss");
-    });
-
-    return snippets;
+    return Snippets.find({},{sort:{regTimestamp:-1}});
 };
 
 Template.inputarea.events({
     'click #btnInsert': function () {
-        var content = $('#txtContent').val();
-        Snippets.insert({content:content, regdate:new Date().getTime()});
+        var content = $('textarea').val();
+        var date = new Date();
+        if(!content.length) {
+            return;
+        }
+        Snippets.insert({content:content, regTimestamp:date.getTime(),  regdate:date.toLocaleDateString()});
     }
 });
 
