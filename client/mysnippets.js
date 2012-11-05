@@ -1,5 +1,6 @@
 
 Snippets = new Meteor.Collection("snippets");
+Session.set("loginUser", "Kwon")
 
 Template.header.title = function () {
     return "My Snippets";
@@ -17,12 +18,13 @@ Template.inputarea.events({
             return;
         }
         Snippets.insert({content:content, regTimestamp:date.getTime(),  regdate:date.toLocaleDateString()});
-    }
-});
-
-Template.inputarea.events({
+        $('textarea').val('').focus();
+    },
     'click .btnRemove': function () { 
         Snippets.remove(this._id);
+    },
+    'click .btnUpdate': function () { 
+        Snippets.update({_id:this._id}, {content:'updated contents'});
     }
 });
 

@@ -1,6 +1,7 @@
 body {padding-top:60px; padding-left:20px;}
+.pointer {cursor:pointer;}
 
-textarea {width:938px; padding:0px}
+textarea {width:918px; padding:10px}
 div.snippet {border:1px solid silver; margin-top:5px;}
 div.content {padding:10px 10px 0px 10px; border-top:1px solid silver;}
 div.meta {padding:10px; background-color:#FCDED2}
