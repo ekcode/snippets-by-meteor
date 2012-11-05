@@ -17,7 +17,10 @@ Template.inputarea.events({
         if(!content.length) {
             return;
         }
-        Snippets.insert({content:content, regTimestamp:date.getTime(),  regdate:date.toLocaleDateString()});
+        Snippets.insert({content:content,
+            regTimestamp:date.getTime(),
+            regdate:date.toLocaleDateString(),
+            user:Meteor.user()});
         $('textarea').val('').focus();
     },
     'click .btnRemove': function () { 
@@ -28,8 +31,20 @@ Template.inputarea.events({
     }
 });
 
-Template.admin.events({
-    'click #btnRemoveAll': function () {
-        Snippets.remove({});
+Template.loginForm.events({
+    'click #signupBtn': function () {
+        var email = $('#inputEmail').val();
+        var emailre = $('#inputEmailRe').val();
+        var password = $('#inputPassword').val();
+
+        Accounts.createUser({'username':email, 'password':password});
+    },
+
+    'click #loginBtn': function () {
+        var email = $('#loginEmail').val();
+        var password = $('#loginPassword').val();
+
+        Meteor.loginWithPassword(email, password);
     }
 });
+
