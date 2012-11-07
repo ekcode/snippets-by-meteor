@@ -50,7 +50,12 @@
           <span class="btnRemove badge badge-important pointer">delete</span>
         </div>
         <div class="content">
-          <pre>{{content}}</pre>
+          {{#if title ""}}
+            <pre class="title">{{title}}</pre>
+            <pre>{{content}}</pre>
+          {{else}}
+            <pre>{{content}}</pre>
+          {{/if}}
         </div>
       </div>
       {{/each}}
