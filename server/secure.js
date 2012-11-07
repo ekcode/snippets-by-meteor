@@ -1,9 +1,13 @@
 
 Snippets.allow({
     insert: function(userId, doc) {
-        return (userId && doc.owner === userId);
+        return !!Meteor.user();
     },
-    fetch: ['owner']
+    remove: function(userId, docs) {
+        return _.all(docs, function(doc) {
+            return doc.user._id === userId;
+        });
+    }
 
 });
 

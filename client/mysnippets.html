@@ -23,6 +23,9 @@
             <li class="active"><a href="#">My Snippets</a></li>
             <li><a href="#">Tags</a></li>
             <li><a href="#">About</a></li>
+            {{#if currentUser}}
+            <li><a href="javascript:Meteor.logout()"><span class="label label-warning">Logout [{{Meteor.user.username}}]</span></a></li>
+            {{/if}}
           </ul>
         </div>
       </div>

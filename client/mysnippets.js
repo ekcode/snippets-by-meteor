@@ -8,7 +8,7 @@ Template.header.title = function () {
 };
 
 Template.inputarea.snippets = function () {
-    return Snippets.find({},{sort:{regTimestamp:-1}});
+    return Snippets.find({"user._id":Meteor.userId()},{sort:{regTimestamp:-1}});
 };
 
 Template.inputarea.events({
