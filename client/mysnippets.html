@@ -7,7 +7,8 @@
   {{> header}}
 
   {{#if currentUser}}
-    {{> inputarea}}
+    {{> inputTemplate}}
+    {{> contentTemplate}}
   {{else}}
     {{> loginForm}}
   {{/if}}
@@ -20,7 +21,7 @@
         <a class="brand" href="#">{{title}}</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="active"><a href="#">My Snippets</a></li>
+            <li class="active"><a href="#">Public</a></li>
             <li><a href="#">Tags</a></li>
             <li><a href="#">About</a></li>
             {{#if currentUser}}
@@ -33,14 +34,23 @@
   </div>
 </template>
 
-<template name="inputarea">
+<template name="inputTemplate">
   <div class="row">
     <div class="span12">
       <textarea rows="10"/>
       <div style="text-align:right;">
-        <input type="button" class="btn btn-large btn-primary" id="btnInsert" value="Create New Snippet" />
+        <input type="checkbox" class="" id="chkPublic" /><label for="chkPublic">Public</label>
+        <input type="button" class="btn btn-medium btn-primary" id="btnInsert" value="Create New Snippet" />
       </div>
-      <hr/>
+    </div>
+  </div>
+</template>
+
+
+<template name="contentTemplate">
+  <hr/>
+  <div class="row">
+    <div class="span12">
       {{#each snippets}}
       <div class="snippet">
         <div class="meta">
@@ -52,9 +62,9 @@
         <div class="content">
           {{#if title ""}}
             <pre class="title">{{title}}</pre>
-            <pre>{{content}}</pre>
+            <pre class="brush: java">{{content}}</pre>
           {{else}}
-            <pre>{{content}}</pre>
+            <pre class="brush: java">{{content}}</pre>
           {{/if}}
         </div>
       </div>

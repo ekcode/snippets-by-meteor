@@ -2,7 +2,7 @@ body {padding-top:60px; padding-left:20px;}
 .pointer {cursor:pointer;}
 
 textarea {width:918px; padding:10px}
-div.snippet {border:1px solid silver; margin-top:5px;}
-div.content {padding:10px 10px 0px 10px; border-top:1px solid silver;}
-div.meta {padding:10px; background-color:#FCDED2}
+div.snippet {border:1px solid silver; margin:5px;}
+div.content {padding:10px 10px 10px 10px; border-top:1px solid silver; background-color:#1B2426}
+div.meta {padding:10px; background-color:#932750}
 pre.title {font-weight:bold; color:#289E81}

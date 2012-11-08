@@ -2,16 +2,15 @@
 Snippets = new Meteor.Collection("snippets");
 
 
-
 Template.header.title = function () {
     return "My Snippets";
 };
 
-Template.inputarea.snippets = function () {
+Template.contentTemplate.snippets = function () {
     return Snippets.find({"user._id":Meteor.userId()},{sort:{regTimestamp:-1}});
 };
 
-Template.inputarea.events({
+Template.inputTemplate.events({
     'click #btnInsert': function () {
         var content = $('textarea').val();
         var title = '';
@@ -33,7 +32,11 @@ Template.inputarea.events({
             regdate:date.toLocaleDateString(),
             user:Meteor.user()});
         $('textarea').val('').focus();
-    },
+    }
+
+});
+
+Template.contentTemplate.events({
     'click .btnRemove': function () { 
         Snippets.remove(this._id);
     },
@@ -42,9 +45,8 @@ Template.inputarea.events({
     }
 });
 
-Meteor.startup(function() {
+Template.loginForm.rendered = function() {
     $('#loginUsername').focus();
-
     $('#loginPassword').keypress(function(e) {
         var code = e.keyCode || e.which;
         if(code == 13) {
@@ -57,5 +59,18 @@ Meteor.startup(function() {
         if(code == 13) {
             $('#signupBtn').click();
         }
+    });
+};
+
+Template.inputTemplate.rendered = function() {
+    console.log('focus to textarea');
+    $('textarea').focus();
+};
+
+Meteor.startup(function() {
+    $.getScript('http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJava.js')
+    .done(function(script, textStatus) {
+        SyntaxHighlighter.all();
+        console.log(textStatus);
     });
 });
