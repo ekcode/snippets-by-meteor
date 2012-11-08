@@ -67,10 +67,9 @@ Template.inputTemplate.rendered = function() {
     $('textarea').focus();
 };
 
+Template.contentTemplate.rendered = function() {
+    SyntaxHighlighter.highlight();
+};
+
 Meteor.startup(function() {
-    $.getScript('http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJava.js')
-    .done(function(script, textStatus) {
-        SyntaxHighlighter.all();
-        console.log(textStatus);
-    });
 });
