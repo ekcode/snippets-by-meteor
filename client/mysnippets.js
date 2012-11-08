@@ -42,3 +42,20 @@ Template.inputarea.events({
     }
 });
 
+Meteor.startup(function() {
+    $('#loginUsername').focus();
+
+    $('#loginPassword').keypress(function(e) {
+        var code = e.keyCode || e.which;
+        if(code == 13) {
+            $('#loginBtn').click();
+        }
+    });
+
+    $('#inputPassword').keypress(function(e) {
+        var code = e.keyCode || e.which;
+        if(code == 13) {
+            $('#signupBtn').click();
+        }
+    });
+});
