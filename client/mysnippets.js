@@ -6,13 +6,23 @@ Template.header.title = function () {
     return "My Snippets";
 };
 
+Template.header.events({
+    'click .navItem': function (event) {
+        $('.nav li').removeClass('active');
+        $(event.target).parent().addClass('active');
+    },
+});
+
 Template.contentTemplate.snippets = function () {
+    //if($('#navPublic').hasClass('active')) {
     return Snippets.find({"user._id":Meteor.userId()},{sort:{regTimestamp:-1}});
 };
 
+// helper
 Template.contentTemplate.isPublic = function () {
     return this.public == "Y";
 }
+
 Template.inputTemplate.events({
     'click #btnInsert': function () {
         var content = $('textarea').val();

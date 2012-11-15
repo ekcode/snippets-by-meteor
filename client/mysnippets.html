@@ -21,9 +21,9 @@
         <a class="brand" href="#">{{title}}</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li class="active"><a href="#">Public</a></li>
-            <li><a href="#">Tags</a></li>
-            <li><a href="#">About</a></li>
+            <li class="navItem" id="navPublic"><a href="#">Public</a></li>
+            <li class="navItem" id="navTags"><a href="#">Tags</a></li>
+            <li class="navItem" id="navAbout"><a href="#">About</a></li>
             {{#if currentUser}}
             <li><a href="javascript:Meteor.logout()"><span class="label label-warning">Logout [{{Meteor.user.username}}]</span></a></li>
             {{/if}}
@@ -39,9 +39,14 @@
     <div class="span12">
       <textarea rows="10"/>
       <div style="text-align:right;">
-        <label for="chkPublic"><input type="checkbox" id="chkPublic" /> Public</label>
+        <label class="checkbox" for="chkPublic"><input type="checkbox" id="chkPublic" />Public</label>
         <input type="button" class="btn btn-medium btn-primary" id="btnInsert" value="Create New Snippet" />
       </div>
+    </div>
+    <div class="span4">
+      <span class="label">Java</span>
+      <span class="label label-success">CSS</span>
+      <span class="label label-warning">Linux</span>
     </div>
   </div>
 </template>
@@ -54,21 +59,24 @@
       {{#each snippets}}
       <div class="snippet">
         <div class="meta">
-          <span class="meta title span6"><u>{{title}}</u></span>
+          <div style="text-align:left;">
+            <span class="meta title span6"><u>{{title}}</u></span>
+          </div>
           <span class="meta userinfo text-info">{{user.username}}[{{regdate}}]</span>
-          {{#if isPublic }}<span class="badge badge-info">Public</span>{{/if}}
-          <span class="btnRemove badge badge-important pointer">Delete</span>
+          {{#if isPublic }}
+            <span class="label label-info">Public</span>
+            <span class="btnPublic pointer">Set to private</span>
+          {{else}}
+            <span class="label label-important">Private</span>
+            <span class="btnPublic pointer">Set to public</span>
+          {{/if}}
+          <span class="btnRemove pointer">Delete</span>
         </div>
         <div class="content">
             <pre class="brush: java">{{content}}</pre>
         </div>
       </div>
       {{/each}}
-    </div>
-    <div class="span4">
-      <span class="label">Java</span>
-      <span class="label label-success">CSS</span>
-      <span class="label label-warning">Linux</span>
     </div>
   </div>
 </template>

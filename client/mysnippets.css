@@ -1,7 +1,14 @@
 body {padding-top:60px; padding-left:20px;}
 .pointer {cursor:pointer;}
 
+.btnRemove,
+.btnPublic {
+    text-decoration:underline;
+    color:#9A2040;
+    font-size:12px;
+}
+
 textarea {width:918px; padding:10px}
-div.snippet {border:1px solid silver; margin:5px;}
+div.snippet {border:1px solid silver; margin:5px; border-radius:5px;}
 div.content {padding:0px; background-color:#C0C0C0}
-div.meta {padding:10px; background-color:#C0C0C0; border-bottom:1px solid #000;}
+div.meta {padding:10px; background-color:#C0C0C0; border-bottom:1px solid #000; text-align:right;}
