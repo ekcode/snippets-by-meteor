@@ -10,10 +10,14 @@ Template.contentTemplate.snippets = function () {
     return Snippets.find({"user._id":Meteor.userId()},{sort:{regTimestamp:-1}});
 };
 
+Template.contentTemplate.isPublic = function () {
+    return this.public == "Y";
+}
 Template.inputTemplate.events({
     'click #btnInsert': function () {
         var content = $('textarea').val();
         var title = '';
+        var public = 'N';
         var lines = $('textarea').val().split('\n');
         if(lines[0].substring(0,2) == '//') {
             title = lines[0].substring(2);
@@ -26,8 +30,13 @@ Template.inputTemplate.events({
             return;
         }
 
+        if($('#chkPublic').attr('checked')) {
+            public = 'Y'
+        }
+
         Snippets.insert({title:title,
             content:content,
+            public:public,
             regTimestamp:date.getTime(),
             regdate:date.toLocaleDateString(),
             user:Meteor.user()});
@@ -40,9 +49,6 @@ Template.contentTemplate.events({
     'click .btnRemove': function () { 
         Snippets.remove(this._id);
     },
-    'click .btnUpdate': function () { 
-        Snippets.update({_id:this._id}, {content:'updated contents'});
-    }
 });
 
 Template.loginForm.rendered = function() {

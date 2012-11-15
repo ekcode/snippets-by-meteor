@@ -56,8 +56,8 @@
         <div class="meta">
           <span class="meta title span6"><u>{{title}}</u></span>
           <span class="meta userinfo text-info">{{user.username}}[{{regdate}}]</span>
-          <span class="btnUpdate badge badge-info pointer">edit</span>
-          <span class="btnRemove badge badge-important pointer">delete</span>
+          {{#if isPublic }}<span class="badge badge-info">Public</span>{{/if}}
+          <span class="btnRemove badge badge-important pointer">Delete</span>
         </div>
         <div class="content">
             <pre class="brush: java">{{content}}</pre>
