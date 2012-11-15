@@ -39,7 +39,7 @@
     <div class="span12">
       <textarea rows="10"/>
       <div style="text-align:right;">
-        <input type="checkbox" class="" id="chkPublic" /><label for="chkPublic">Public</label>
+        <label for="chkPublic"><input type="checkbox" id="chkPublic" /> Public</label>
         <input type="button" class="btn btn-medium btn-primary" id="btnInsert" value="Create New Snippet" />
       </div>
     </div>
@@ -54,18 +54,13 @@
       {{#each snippets}}
       <div class="snippet">
         <div class="meta">
-          <span class="meta userinfo text-info">{{user.username}}</span>
-          <span class="meta regdate text-info"> [{{regdate}}]</span>
+          <span class="meta title span6"><u>{{title}}</u></span>
+          <span class="meta userinfo text-info">{{user.username}}[{{regdate}}]</span>
           <span class="btnUpdate badge badge-info pointer">edit</span>
           <span class="btnRemove badge badge-important pointer">delete</span>
         </div>
         <div class="content">
-          {{#if title ""}}
-            <pre class="title">{{title}}</pre>
             <pre class="brush: java">{{content}}</pre>
-          {{else}}
-            <pre class="brush: java">{{content}}</pre>
-          {{/if}}
         </div>
       </div>
       {{/each}}
@@ -121,3 +116,4 @@
     </div>
   </form>
 </template>
+

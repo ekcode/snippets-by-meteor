@@ -3,6 +3,5 @@ body {padding-top:60px; padding-left:20px;}
 
 textarea {width:918px; padding:10px}
 div.snippet {border:1px solid silver; margin:5px;}
-div.content {padding:10px 10px 10px 10px; background-color:#C0C0C0}
+div.content {padding:0px; background-color:#C0C0C0}
 div.meta {padding:10px; background-color:#C0C0C0; border-bottom:1px solid #000;}
-pre.title {font-weight:bold; color:#289E81}
