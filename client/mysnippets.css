@@ -9,7 +9,9 @@ body {padding-top:60px; padding-left:20px;}
     font-size:12px;
 }
 
-textarea {width:918px; padding:10px}
+textarea {width:918px; padding:10px; font-family: "Lucida Console", "Courier New", Fixedsys, Tahoma;}
 div.snippet {border:1px solid silver; margin:5px; border-radius:5px;}
 div.content {padding:0px; background-color:#C0C0C0}
 div.meta {padding:10px; background-color:#C0C0C0; border-bottom:1px solid #000; text-align:right;}
+#btnInsert {margin-left:770px;}
+.footer {margin:20px 0px; text-align:center;}

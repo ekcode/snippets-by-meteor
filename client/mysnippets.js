@@ -18,10 +18,11 @@ Template.contentTemplate.snippets = function () {
     return Snippets.find({"user._id":Meteor.userId()},{sort:{regTimestamp:-1}});
 };
 
-// helper
-Template.contentTemplate.isPublic = function () {
-    return this.public == "Y";
-}
+Template.contentTemplate.helpers ({
+    isPublic: function() {
+        return this.public == "Y";
+    }
+});
 
 Template.inputTemplate.events({
     'click #btnInsert': function () {

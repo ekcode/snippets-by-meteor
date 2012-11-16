@@ -12,6 +12,7 @@
   {{else}}
     {{> loginForm}}
   {{/if}}
+  {{> footerTemplate }}
 </body>
 
 <template name="header">
@@ -37,16 +38,11 @@
 <template name="inputTemplate">
   <div class="row">
     <div class="span12">
-      <textarea rows="10"/>
-      <div style="text-align:right;">
-        <label class="checkbox" for="chkPublic"><input type="checkbox" id="chkPublic" />Public</label>
+      <label class="checkbox">Set to public? <input type="checkbox" id="chkPublic" /> </label>
+      <textarea rows="10" placeholder="// Title(option)"/>
+      <div>
         <input type="button" class="btn btn-medium btn-primary" id="btnInsert" value="Create New Snippet" />
       </div>
-    </div>
-    <div class="span4">
-      <span class="label">Java</span>
-      <span class="label label-success">CSS</span>
-      <span class="label label-warning">Linux</span>
     </div>
   </div>
 </template>
@@ -73,7 +69,7 @@
           <span class="btnRemove pointer">Delete</span>
         </div>
         <div class="content">
-            <pre class="brush: java;toolbar: false;">{{content}}</pre>
+            <pre id="content" class="brush: java;toolbar: false;">{{content}}</pre>
         </div>
       </div>
       {{/each}}
@@ -125,3 +121,11 @@
   </form>
 </template>
 
+<template name="footerTemplate">
+<div class="row footer">
+    <div class="span12">
+        Thanks~! <br/>
+        Powered by <a href="http://meteor.com/">Meteor.</a>
+    </div>
+</div>
+</template>
