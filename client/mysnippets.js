@@ -57,8 +57,16 @@ Template.inputTemplate.events({
 
 Template.contentTemplate.events({
     'click .btnRemove': function () { 
-        Snippets.remove(this._id);
+        if(confirm('Are you sure?')) {
+            Snippets.remove(this._id);
+        }
     },
+    'click .btnSetToPrivate': function () {
+        Snippets.update({_id:this._id}, {$set: {public: 'N'}});
+    },
+    'click .btnSetToPublic': function () {
+        Snippets.update({_id:this._id}, {$set: {public: 'Y'}});
+    }
 });
 
 Template.loginForm.rendered = function() {

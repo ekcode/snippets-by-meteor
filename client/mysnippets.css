@@ -2,7 +2,8 @@ body {padding-top:60px; padding-left:20px;}
 .pointer {cursor:pointer;}
 
 .btnRemove,
-.btnPublic {
+.btnSetToPrivate,
+.btnSetToPublic {
     text-decoration:underline;
     color:#9A2040;
     font-size:12px;

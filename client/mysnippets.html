@@ -65,15 +65,15 @@
           <span class="meta userinfo text-info">{{user.username}}[{{regdate}}]</span>
           {{#if isPublic }}
             <span class="label label-info">Public</span>
-            <span class="btnPublic pointer">Set to private</span>
+            <span class="btnSetToPrivate pointer">Set to private</span>
           {{else}}
             <span class="label label-important">Private</span>
-            <span class="btnPublic pointer">Set to public</span>
+            <span class="btnSetToPublic pointer">Set to public</span>
           {{/if}}
           <span class="btnRemove pointer">Delete</span>
         </div>
         <div class="content">
-            <pre class="brush: java">{{content}}</pre>
+            <pre class="brush: java;toolbar: false;">{{content}}</pre>
         </div>
       </div>
       {{/each}}
