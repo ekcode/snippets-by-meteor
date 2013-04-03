@@ -13,6 +13,7 @@
     {{> loginForm}}
   {{/if}}
   {{> footerTemplate }}
+  {{> usersTemplate }}
 </body>
 
 <template name="header">
@@ -23,7 +24,7 @@
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li class="navItem" id="navPublic"><a href="#">Public</a></li>
-            <li class="navItem" id="navTags"><a href="#">Tags</a></li>
+            <li class="navItem" id="navUsers"><a href="#">Users</a></li>
             <li class="navItem" id="navAbout"><a href="#">About</a></li>
             {{#if currentUser}}
             <li><a href="javascript:Meteor.logout()"><span class="label label-warning">Logout [{{Meteor.user.username}}]</span></a></li>
@@ -119,6 +120,14 @@
       </div>
     </div>
   </form>
+</template>
+
+<template name="usersTemplate">
+  <div id="usersBox">
+        {{#each users}}
+            <div>{{username}}</div>
+        {{/each}}
+  </div>
 </template>
 
 <template name="footerTemplate">

@@ -1,6 +1,7 @@
 
 Snippets = new Meteor.Collection("snippets");
 
+Meteor.subscribe("users");
 
 Template.header.title = function () {
     return "My Snippets";
@@ -88,13 +89,31 @@ Template.loginForm.rendered = function() {
 };
 
 Template.inputTemplate.rendered = function() {
-    console.log('focus to textarea');
     $('textarea').focus();
 };
 
 Template.contentTemplate.rendered = function() {
     SyntaxHighlighter.highlight();
 };
+
+Template.usersTemplate.users = function() {
+    return Meteor.users.find();
+};
+
+Template.usersTemplate.rendered = function() {
+    $('#usersBox').hide();
+};
+
+Template.header.events({
+    'click #navUsers': function() {
+        if($('#usersBox').css("display") == "none") {
+            $('#usersBox').show();
+        } else {
+            $('#usersBox').hide();
+        }
+    }
+
+});
 
 Meteor.startup(function() {
 });
